@@ -35,7 +35,7 @@ cd dns-slam
 
 ```bash
 # Create conda environment
-conda create -n coslam python=3.7
+conda create -n dns-slam python=3.7
 conda activate dns-slam
 
 # Install the pytorch first (Please check the cuda version)
