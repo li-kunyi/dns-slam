@@ -24,7 +24,7 @@ training:
   lambda_label: 0.1
   lambda_smooth: 0.00001
   lambda_fs: 10
-  lambda_opacity: 100
+  lambda_opacity: 10
   n_samples_ray: 32
   n_surface_ray: 15
   smooth_pts: 64

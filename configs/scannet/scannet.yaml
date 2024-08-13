@@ -47,7 +47,7 @@ mapping:
   choose_keyframe_every: 15
   vis_every: 200
   mesh_every: 50
-  checkpoint_every: 1000
+  checkpoint_every: 2000
 
 meshing:
   show_forecast: False
