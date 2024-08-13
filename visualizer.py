@@ -18,7 +18,7 @@ if __name__ == '__main__':
         description='Arguments to visualize the SLAM process.'
     )
     parser.add_argument('config', type=str, help='Path to config file.')
-    parser.add_argument('--input_folder', type=str,
+    parser.add_argument('--input', type=str,
                         help='input folder, this have higher priority, can overwrite the one in config file')
     parser.add_argument('--output', type=str,
                         help='output folder, this have higher priority, can overwrite the one inconfig file')
@@ -35,6 +35,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     cfg = load_config(args.config, 'configs/slam.yaml')
+    cfg = load_config(args.config, 'configs/slam.yaml')
+    if args.input is not None:
+        cfg['dataset_dir'] = args.input
+    if args.output is not None:
+        cfg['out_dir'] = args.output
 
     scale = cfg['scale']
     input_dir = cfg['dataset_dir'] + '/' + cfg['dataset'] + '/' + cfg['scene']
@@ -59,10 +64,9 @@ if __name__ == '__main__':
     estimate_c2w_list = estimate_c2w_list.cpu().numpy()
     gt_c2w_list = gt_c2w_list.cpu().numpy()
 
-    frontend = SLAMFrontend(output, init_pose=estimate_c2w_list[0], cam_scale=0.3,
+    frontend = SLAMFrontend(output, init_pose=estimate_c2w_list[0], cam_scale=0.1,
                             save_rendering=args.save_rendering, near=0,
                             estimate_c2w_list=estimate_c2w_list, gt_c2w_list=gt_c2w_list).start()
-
     for i in tqdm(range(0, N+1)):
         # show every second frame for speed up
         if args.vis_input_frame and i % 2 == 0:

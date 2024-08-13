@@ -155,17 +155,17 @@ def draw_trajectory(queue, output, init_pose, cam_scale,
     vis = o3d.visualization.Visualizer()
 
     vis.register_animation_callback(animation_callback)
-    vis.create_window(window_name=output, height=1080, width=1920)
+    vis.create_window(window_name=output, height=720, width=1280)
+    vis.add_geometry(o3d.geometry.TriangleMesh.create_coordinate_frame(size=1.0, origin=[0, 0, 0]))
     vis.get_render_option().point_size = 4
     vis.get_render_option().mesh_show_back_face = False
-
+    
     ctr = vis.get_view_control()
     ctr.set_constant_z_near(near)
     ctr.set_constant_z_far(1000)
-
     # set the viewer's pose in the back of the first frame's pose
     param = ctr.convert_to_pinhole_camera_parameters()
-    init_pose[:3, 3] += 2*normalize(init_pose[:3, 2])
+    # init_pose[:3, 3] += 2*normalize(init_pose[:3, 2])
     init_pose[:3, 2] *= -1
     init_pose[:3, 1] *= -1
     init_pose = np.linalg.inv(init_pose)
