@@ -16,7 +16,7 @@
 
 This repository contains the code for the paper DNS-SLAM, a neural semantic SLAM method that perform real-time camera tracking and dense reconstruction based on a joint encoding.
 
-
+## NOTE: This is a pre-released version, code is not fully ready yet.
 
 ## Update
 
@@ -80,12 +80,12 @@ You can run DNS-SLAM using the code below:
 
 ```
 # replica
-python run.py configs/replica/room_0.yaml
+python run.py configs/replica/room_0.yaml --input /mnt/user/datasets #replace as your root data path
 
 #scannet
-python run.py configs/scannet/scene0000.yaml
+python run.py configs/scannet/scene0000.yaml --input /mnt/user/datasets #replace as your root data path
 ```
-
+You can also change input(dataset_dir) and output(out_dir) path in configs/slam.yaml
 
 
 ## Evaluation

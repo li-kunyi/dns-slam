@@ -1,5 +1,5 @@
 dataset_dir: /mnt/user/datasets
-out_dir: /mnt/user/dns-slam/checkpoints
+out_dir: checkpoints
 
 verbose: True
 low_gpu_mem: True

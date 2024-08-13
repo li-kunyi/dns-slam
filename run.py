@@ -15,14 +15,14 @@ def setup_seed(seed):
     
 
 if __name__ == '__main__':
-    setup_seed(0)
+    setup_seed(20)
     torch.multiprocessing.set_start_method('spawn')
 
     parser = argparse.ArgumentParser(
         description='Arguments for running the NICE-SLAM/iMAP*.'
     )
     parser.add_argument('config', type=str, help='Path to config file.')
-    parser.add_argument('--input_folder', type=str,
+    parser.add_argument('--input', type=str,
                         help='input folder, this have higher priority, can overwrite the one in config file')
     parser.add_argument('--output', type=str,
                         help='output folder, this have higher priority, can overwrite the one in config file')
@@ -31,6 +31,10 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     cfg = load_config(args.config, 'configs/slam.yaml')
+    if args.input is not None:
+        cfg['dataset_dir'] = args.input
+    if args.output is not None:
+        cfg['out_dir'] = args.output
     print(cfg)
     
     device = [torch.device('cuda:0'), torch.device('cuda:0')]

@@ -28,7 +28,7 @@ training:
   n_samples_ray: 32
   n_surface_ray: 15
   smooth_pts: 64
-  opacity_sigma: 0.05
+  opacity_sigma: 0.02
 
 tracking:
   cam_lr: 0.001
@@ -41,14 +41,14 @@ mapping:
   n_joint_optimize_frames: 4
   n_refer_frames: 2
   n_pixels: 2000
-  n_iters: 60
+  n_iters: 100
   n_iters_first: 500
   n_pts_batch: 1000 
   optimize_every_n_frames: 5
   choose_keyframe_every: 30
-  vis_every: 400
+  vis_every: 200
   mesh_every: 50
-  checkpoint_every: 2000
+  checkpoint_every: 1000
 
 meshing:
   show_forecast: False
