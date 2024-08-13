@@ -36,8 +36,6 @@ if __name__ == '__main__':
     
     cfg = load_config(args.config, 'configs/slam.yaml')
 
-    import ipdb;ipdb.set_trace()
-    
     scale = cfg['scale']
     input_dir = cfg['dataset_dir'] + '/' + cfg['dataset'] + '/' + cfg['scene']
     output = cfg['out_dir'] + '/' + cfg['dataset'] + '/' + cfg['scene']  if args.output is None else args.output 
