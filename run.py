@@ -15,7 +15,7 @@ def setup_seed(seed):
     
 
 if __name__ == '__main__':
-    setup_seed(20)
+    setup_seed(10)
     torch.multiprocessing.set_start_method('spawn')
 
     parser = argparse.ArgumentParser(

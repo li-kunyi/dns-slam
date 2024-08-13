@@ -28,7 +28,7 @@ training:
   n_samples_ray: 32
   n_surface_ray: 15
   smooth_pts: 64
-  opacity_sigma: 0.02
+  opacity_sigma: 0.05
 
 tracking:
   cam_lr: 0.001
@@ -47,7 +47,7 @@ mapping:
   optimize_every_n_frames: 5
   choose_keyframe_every: 30
   vis_every: 200
-  mesh_every: 50
+  mesh_every: 500
   checkpoint_every: 1000
 
 meshing:
@@ -58,7 +58,7 @@ meshing:
   mesh_use_all_frames: False
   points_batch_size: 16384
   level_set: 0.
-  resolution: 512
+  resolution: 256
   eval_rec: False
   clean_mesh: True
   depth_test: False
