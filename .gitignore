@@ -2,7 +2,6 @@
 *.ply
 *.jpg
 *.png
-*.txt
 .vscode
 checkpoints
 __pycache__
