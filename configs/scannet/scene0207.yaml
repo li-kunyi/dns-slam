@@ -1,0 +1,17 @@
+inherit_from: configs/scannet/scannet.yaml
+
+back_end:
+  bound: [[1.0,9.3],[-0.3,7.3],[-0.4,3.1]]
+  marching_cubes_bound: [[1.0,9.3],[-0.3,7.3],[-0.4,3.1]]
+  # bound: [[0.3,9.9],[-1.0,8.0],[-1.0,3.8]]
+  # marching_cubes_bound: [[0.3,9.9],[-1.0,8.0],[-1.0,3.8]]
+
+scene: scene0207_00
+
+cam:
+  H: 480
+  W: 640
+  fx: 577.590698
+  fy: 578.729797
+  cx: 318.905426
+  cy: 242.683609

@@ -1,0 +1,17 @@
+inherit_from: configs/scannet/scannet.yaml
+
+back_end:
+  bound: [[-1.1,9.8],[-1.0,10.0],[-1.0,4.3]]
+  marching_cubes_bound: [[-1.1,9.8],[-1.0,10.0],[-1.0,4.3]]
+
+scene: scene0106_00
+
+cam:
+  H: 480
+  W: 640
+  fx: 577.590698
+  fy: 578.729797
+  cx: 318.905426
+  cy: 242.683609
+  png_depth_scale: 1000.
+  crop_edge: 10

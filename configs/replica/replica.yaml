@@ -1,0 +1,70 @@
+dataset: replica
+
+cam:
+  H: 680
+  W: 1200
+  fx: 600.0
+  fy: 600.0
+  cx: 599.5
+  cy: 339.5
+  png_depth_scale: 1000.
+  crop_edge: 0
+  ignore_edge: 0
+
+model:
+  grid:
+    method: 'HashGrid'
+    hash_size: 16
+    voxel_size: 0.02
+
+training:
+  lr: 0.005
+  lambda_color: 5.0
+  lambda_depth: 5.0
+  lambda_label: 0.1
+  lambda_smooth: 0.00001
+  lambda_fs: 10
+  lambda_opacity: 100
+  n_samples_ray: 32
+  n_surface_ray: 15
+  smooth_pts: 64
+  opacity_sigma: 0.05
+
+tracking:
+  cam_lr: 0.001
+  n_iters: 30
+  n_pixels: 1000
+
+mapping:
+  BA_cam_lr: 0.0005
+  start_optimize_idx: 10
+  n_joint_optimize_frames: 4
+  n_refer_frames: 2
+  n_pixels: 2000
+  n_iters: 60
+  n_iters_first: 500
+  n_pts_batch: 1000 
+  optimize_every_n_frames: 5
+  choose_keyframe_every: 30
+  vis_every: 400
+  mesh_every: 50
+  checkpoint_every: 2000
+
+meshing:
+  show_forecast: False
+  color: True
+  label: True
+  element: False
+  mesh_use_all_frames: False
+  points_batch_size: 16384
+  level_set: 0.
+  resolution: 512
+  eval_rec: False
+  clean_mesh: True
+  depth_test: False
+  use_est_depth: False
+  mesh_coarse_level: False
+  clean_mesh_bound_scale: 1.02
+  get_largest_components: False
+  remove_small_geometry_threshold: 0.2
+  get_mask_use_all_frames: False

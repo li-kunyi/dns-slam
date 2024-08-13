@@ -1,0 +1,9 @@
+inherit_from: configs/replica/replica.yaml
+
+back_end:
+  bound: [[-5.5,5.9],[-6.7,5.4],[-4.7,5.3]]
+  # marching_cubes_bound: [[-5.5,5.9],[-6.7,5.4],[-4.7,5.3]]
+  # bound: [[-3,3],[-4,2.5],[-2,2.5]]
+  marching_cubes_bound: [[-2.2,2.6],[-3.4,2.1],[-1.4,2.0]]
+
+scene: office_0

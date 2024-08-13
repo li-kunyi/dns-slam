@@ -1,0 +1,69 @@
+dataset: 'scannet'
+
+cam:
+  H: 480 
+  W: 640
+  fx: 577.590698
+  fy: 578.729797
+  cx: 318.905426
+  cy: 242.683609
+  png_depth_scale: 1000. #for depth image in png format
+  crop_edge: 10
+   
+training:
+  lr: 0.001
+  lambda_color: 5.0
+  lambda_depth: 1.0
+  lambda_label: 0.1
+  lambda_smooth: 0.001
+  lambda_fs: 10
+  lambda_opacity: 10
+  n_samples_ray: 32
+  n_surface_ray: 15
+  smooth_pts: 128
+  opacity_sigma: 0.1
+
+model:
+  grid:
+    method: 'HashGrid'
+    hash_size: 20
+    voxel_size: 0.04
+
+tracking:
+  cam_lr: 0.001
+  n_iters: 30
+  n_pixels: 1000
+
+mapping:
+  BA_cam_lr: 0.0005
+  start_optimize_idx: 10
+  n_joint_optimize_frames: 5
+  n_refer_frames: 2
+  n_pixels: 2000
+  n_iters: 100
+  n_iters_first: 500
+  n_pts_batch: 1000
+  optimize_every_n_frames: 5
+  choose_keyframe_every: 15
+  vis_every: 200
+  mesh_every: 50
+  checkpoint_every: 3000
+
+meshing:
+  show_forecast: False
+  color: True
+  label: False
+  element: False
+  mesh_use_all_frames: False
+  points_batch_size: 16384
+  level_set: 0.
+  resolution: 256
+  eval_rec: False
+  clean_mesh: True
+  depth_test: False
+  use_est_depth: True
+  mesh_coarse_level: False
+  clean_mesh_bound_scale: 1.02
+  get_largest_components: False
+  remove_small_geometry_threshold: 0.2
+  get_mask_use_all_frames: False

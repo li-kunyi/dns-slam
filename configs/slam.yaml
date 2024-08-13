@@ -1,0 +1,27 @@
+dataset_dir: /mnt/user/datasets
+out_dir: /mnt/user/dns-slam/checkpoints
+
+verbose: True
+low_gpu_mem: True
+
+sync_method: strict
+use_gt_camera: False
+const_speed_assumption: True
+seperate_LR: False
+
+scale: 1
+bound_divisible: 0.32
+
+model:
+  pts_dim: 3
+  pixel_dim: 64
+  hidden_dim: 32
+
+  pos:
+    method: 'OneBlob'
+    n_bins: 16
+  grid:
+    method: 'HashGrid'
+    hash_size: 20
+    voxel_size: 0.04
+
