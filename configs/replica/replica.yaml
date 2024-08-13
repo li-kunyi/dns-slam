@@ -32,8 +32,8 @@ training:
 
 tracking:
   cam_lr: 0.001
-  n_iters: 30
-  n_pixels: 1000
+  n_iters: 50
+  n_pixels: 500
 
 mapping:
   BA_cam_lr: 0.0005
@@ -47,7 +47,7 @@ mapping:
   optimize_every_n_frames: 5
   choose_keyframe_every: 30
   vis_every: 200
-  mesh_every: 500
+  mesh_every: 50
   checkpoint_every: 1000
 
 meshing:

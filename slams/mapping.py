@@ -821,7 +821,7 @@ class Mapper(object):
                         'mask': mask.cpu().numpy(),
                         'features': code}
             
-            pred_color, pred_depth, pred_depth_var, pred_logits, fine_latents, _ = self.renderer(samples)
+            pred_color, pred_depth, _, pred_logits, fine_latents, _ = self.renderer(samples)
 
             d_loss = self.compute_depth_loss(samples['gt_depth'], pred_depth)
             p_loss = self.compute_photometric_loss(samples['gt_color'], pred_color)
@@ -830,7 +830,7 @@ class Mapper(object):
             fs_loss, opacity_loss = get_opacity_loss(samples['z_vals'], samples['gt_depth'], fine_latents[..., -1], self.cfg['training']['opacity_sigma']) 
 
             loss = self.lambda_p * p_loss + self.lambda_d * d_loss + self.lambda_l * l_loss +\
-                 self.lambda_sm * smooth_loss + self.lambda_fs * fs_loss + self.lambda_opacity * opacity_loss
+                   self.lambda_fs * fs_loss + self.lambda_opacity * opacity_loss + self.lambda_sm * smooth_loss
             
             loss.backward(retain_graph=False)
             optimizer.step()
@@ -893,8 +893,6 @@ class Mapper(object):
             l_loss = self.compute_label_loss(samples['gt_label'], pred_logits)
             lt_loss = self.compute_latent_loss(coarse_latents, fine_latents)
             smooth_loss = self.smoothness(sample_points=self.cfg['training']['smooth_pts'])
-
-
             fs_loss, opacity_loss = get_opacity_loss(samples['z_vals'], samples['gt_depth'], fine_latents[..., -1], self.cfg['training']['opacity_sigma']) 
             
             if len(new_decoder_idx) > 0:

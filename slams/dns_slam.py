@@ -66,6 +66,7 @@ class DNS_SLAM():
         self.first_frame_optimized = torch.zeros((1)).int()
         self.first_frame_optimized.share_memory_()
 
+        self.class2label_dict = self.back_dataset.class2label_dict
         if cfg['dataset'] == 'replica':
             self.v_map_function = np.vectorize(self.map_function)
             xlsx_file_path = cfg['dataset_dir'] + '/' + cfg['dataset'] + '/semantic2color.xlsx'
