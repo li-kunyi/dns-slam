@@ -68,16 +68,25 @@ class DNS_SLAM():
 
         self.class2label_dict = self.back_dataset.class2label_dict
         if cfg['dataset'] == 'replica':
-            self.v_map_function = np.vectorize(self.map_function)
-            xlsx_file_path = cfg['dataset_dir'] + '/' + cfg['dataset'] + '/semantic2color.xlsx'
+            # self.v_map_function = np.vectorize(self.map_function)
+            # xlsx_file_path = cfg['dataset_dir'] + '/' + cfg['dataset'] + '/semantic2color.xlsx'
 
+            # self.semantic2color = {}
+            # workbook = openpyxl.load_workbook(xlsx_file_path)
+            # sheet = workbook.active
+            # for col in sheet.iter_cols(min_col=1, max_col=sheet.max_column, values_only=True):
+            #     self.semantic2color.update({col[0]: col[1:]})
+            self.v_map_function = np.vectorize(self.map_function)
             self.semantic2color = {}
-            workbook = openpyxl.load_workbook(xlsx_file_path)
-            sheet = workbook.active
-            for col in sheet.iter_cols(min_col=1, max_col=sheet.max_column, values_only=True):
-                self.semantic2color.update({col[0]: col[1:]})
+            for i in range(101):
+                color = tuple(np.random.randint(0, 256, size=3))
+                self.semantic2color.update({i: color})
         else:
-            self.v_map_function = None
+            self.v_map_function = np.vectorize(self.map_function)
+            self.semantic2color = {}
+            for i in range(50):
+                color = tuple(np.random.randint(0, 256, size=3))
+                self.semantic2color.update({i: color})
 
         self.mesher = Mesher(self.cfg, self, device=self.device[1])
         self.front = Tracker(self.cfg, self, self.device[0])
